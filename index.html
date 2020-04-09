@@ -11,6 +11,37 @@
 body {
   font-family: sans-serif;
 }
+
+h1,h2,h3,h4,h5,h6 {
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+
+p {
+  margin-top: 5px;
+}
+
+code {
+  font-family: monospace;
+}
+
+#test-output {
+  border: 1px solid #bbb;
+}
+
+#test-output > div {
+  border: 1px solid #ccc;
+  padding: 2px;
+  margin: 2px;
+}
+
+.pass {
+  color: green;
+}
+
+.fail {
+  color: red;
+}
 </style>
 </head>
 <body>
@@ -18,6 +49,15 @@ body {
   <h1>XR Tests</h1>
   <h3>Tests of the WebXR API spec</h3>
 
+  <h5>Tests:</h5>
+  <div id="test-output"></div>
+
+  <br>
+  <h5>Notes</h5>
+  <p><a href="https://www.w3.org/TR/webxr/">WebXR Device API Spec</a></p>
+
+<script src="_tests.js"></script>
+<script src="tests.js"></script>
 </div>
 </body>
 </html>
