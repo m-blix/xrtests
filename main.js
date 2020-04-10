@@ -10,7 +10,7 @@ console.log(xrObjs);
 let $ = document.querySelector.bind(document);
 let testOutput = $('#test-output');
 
-
+var passed = 0;
 for (let i = 0; i < tests.length; i++) {
   let test = tests[i];
   let testF = test.f;
@@ -22,6 +22,7 @@ for (let i = 0; i < tests.length; i++) {
   let result;
   if (_result === test.expect) {
     result = '<span class="pass">PASS</span>';
+    passed++;
   } else {
     result = '<span class="fail">FAIL</span>';
     // TODO: add in expect message
@@ -32,3 +33,10 @@ for (let i = 0; i < tests.length; i++) {
 
   testOutput.appendChild(el);
 }
+
+let el = document.createElement('div');
+el.classList.add('final');
+let allPass = passed === tests.length ? '<span class="pass">PASS</span>' : '<span class="fail">FAIL</span>';
+el.innerHTML = `${allPass}: ${passed} of ${tests.length} passed`;
+testOutput.appendChild(el);
+
