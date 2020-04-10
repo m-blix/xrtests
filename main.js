@@ -40,7 +40,7 @@ function runTests(tests) {
     }
 
     let el = document.createElement('div');
-    el.innerHTML = `${desc}: ${result}`;
+    el.innerHTML = `${result} : ${desc}`;
 
     testOutput.appendChild(el);
   }
