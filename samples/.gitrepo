@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
+;
+[subrepo]
+	remote = git@github.com:immersive-web/webxr-samples.git
+	branch = master
+	commit = eea396e20366dd896532a8cf51537552fabc971f
+	parent = b3bb77354dfb4f67c8cb08eec7b7c5223f20bf9a
+	method = merge
+	cmdver = 0.4.1
