@@ -26,6 +26,18 @@ code {
   font-family: monospace;
 }
 
+a:visited {
+  color: blue;
+}
+
+div.section {
+  margin: 20px 0px;
+}
+
+div.section a {
+  display: block;
+}
+
 #test-output {
   border: 1px solid #bbb;
 }
@@ -65,11 +77,27 @@ code {
   <h1>XR Tests</h1>
   <h3>Tests of the WebXR API spec</h3>
 
-  <h5>Tests:</h5>
-  <div id="test-output"></div>
+  <div class="section">
+    <h4>Tests</h4>
+    <div id="test-output"></div>
+  </div>
+
+  <div class="section">
+    <h4>Samples<span></span></h4>
+
+    <h5>VR</h5>
+    <a href="samples/immersive-vr-session.html?usePolyfill=0">VR Session</a>
+    <a href="samples/input-selection.html?usePolyfill=0">Input Selection</a>
+
+
+    <h5>AR</h5>
+    <a href="samples/immersive-ar-session.html?usePolyfill=0">AR Session</a>
+    <a href="samples/hit-test.html?usePolyfill=0">Hit Test</a>
+
+  </div>
 
   <br>
-  <h5>Notes</h5>
+  <h4>Notes</h4>
   <p><a href="https://www.w3.org/TR/webxr/">WebXR Device API Spec</a></p>
 
   <div id="ua"></div>
