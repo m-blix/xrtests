@@ -15,6 +15,12 @@ let uaEl = $('#ua');
 uaEl.innerHTML = ua;
 if (ua.includes(SI)) {
   let version = ua.substr(ua.indexOf(SI)+SI.length, 4);
+  let major, minor;
+  [major, minor] = version.split('.');
+  console.log(version);
+  if (major >= 12) {
+    $('#browser-msg').style.display = 'none';
+  }
 }
 
 runTests(_tests);

@@ -31,6 +31,14 @@ div.section a {
   display: block;
 }
 
+#browser-msg {
+  border: 1px solid #333;
+  padding: 5px;
+  background-color: #f7f5bc;
+  border-style: dashed;
+  margin-top: 5px;
+}
+
 #test-output {
   border: 1px solid #bbb;
 }
