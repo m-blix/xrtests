@@ -28,7 +28,7 @@ div.section {
 }
 
 div.section a {
-  display: block;
+
 }
 
 #browser-msg {
@@ -36,6 +36,14 @@ div.section a {
   padding: 5px;
   background-color: #f7f5bc;
   border-style: dashed;
+  margin-top: 5px;
+}
+
+#pages {
+
+}
+
+#pages > div {
   margin-top: 5px;
 }
 
