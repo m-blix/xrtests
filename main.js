@@ -23,8 +23,6 @@ if (ua.includes(SI)) {
   }
 }
 
-runTests(_tests);
-
 function runTests(tests) {
   testOutput.innerHTML = '';
 
@@ -57,3 +55,20 @@ function runTests(tests) {
   el.innerHTML = `${allPass}: ${passed} of ${tests.length} passed`;
   testOutput.appendChild(el);
 }
+
+const HIT_TEST_ENABLED = true;
+function showValidTestPages() {
+  if (!HIT_TEST_ENABLED) {
+    var pages = $('#pages').querySelectorAll('.hit-test');
+    pages.forEach(function(page){
+      page.style.display = 'none';
+    }); 
+  }
+}
+
+function load() {
+  showValidTestPages();
+  runTests(_tests);
+}
+
+load();
