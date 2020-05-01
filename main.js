@@ -32,7 +32,7 @@ async function runTests(tests) {
     let testF = test.f;
     let desc = test.desc;
 
-    let _result = testF();
+    let _result = await testF();
 
     let result;
     if (_result === test.expect) {

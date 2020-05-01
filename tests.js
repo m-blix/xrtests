@@ -10,9 +10,6 @@ const TESTS = [
 {
   desc: '<code>immersive-vr</code> XRSession supported',
   f: async function() {
-    if (!('xr' in navigator)) {
-      return false;
-    }
     let supported = await navigator.xr.isSessionSupported('immersive-vr');
     return supported;
   },
@@ -21,9 +18,6 @@ const TESTS = [
 {
   desc: '<code>immersive-ar</code> XRSession supported',
   f: async function() {
-    if (!('xr' in navigator)) {
-      return false;
-    }
     let supported = await navigator.xr.isSessionSupported('immersive-ar');
     return supported;
   },
