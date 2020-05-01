@@ -8,6 +8,28 @@ const TESTS = [
   expect: true
 },
 {
+  desc: '<code>immersive-vr</code> XRSession supported',
+  f: async function() {
+    if (!('xr' in navigator)) {
+      return false;
+    }
+    let supported = await navigator.xr.isSessionSupported('immersive-vr');
+    return supported;
+  },
+  expect: true
+},
+{
+  desc: '<code>immersive-ar</code> XRSession supported',
+  f: async function() {
+    if (!('xr' in navigator)) {
+      return false;
+    }
+    let supported = await navigator.xr.isSessionSupported('immersive-ar');
+    return supported;
+  },
+  expect: true
+},
+{
   desc: '"<code>XRSystem</code>" object in <code>window</code> object',
   f: function() {
     return 'XRSystem' in window;

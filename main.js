@@ -23,7 +23,7 @@ if (ua.includes(SI)) {
   }
 }
 
-function runTests(tests) {
+async function runTests(tests) {
   testOutput.innerHTML = '';
 
   var passed = 0;
