@@ -62,7 +62,7 @@ function showValidTestPages() {
     var pages = $('#pages').querySelectorAll('.hit-test');
     pages.forEach(function(page){
       page.style.display = 'none';
-    }); 
+    });
   }
 }
 

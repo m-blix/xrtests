@@ -1,6 +1,13 @@
 // TESTS
 const TESTS = [
 {
+  desc: '<code>xr</code> in <code>navigator</code>; WebXR supported',
+  f: function() {
+    return 'xr' in navigator
+  },
+  expect: true
+},
+{
   desc: '"<code>XRSystem</code>" object in <code>window</code> object',
   f: function() {
     return 'XRSystem' in window;
