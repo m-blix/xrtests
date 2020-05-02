@@ -31,6 +31,14 @@ const TESTS = [
   expect: true
 },
 {
+  desc: '<code>inline</code> XRSession supported',
+  f: async function() {
+    let supported = await navigator.xr.isSessionSupported('inline');
+    return supported;
+  },
+  expect: true
+},
+{
   desc: '"<code>XRSystem</code>" object in <code>window</code> object',
   f: function() {
     return 'XRSystem' in window;
