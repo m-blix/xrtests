@@ -8,6 +8,13 @@ const TESTS = [
   expect: true
 },
 {
+  desc: '"WebVR" API not present (deprecated)',
+  f: function() {
+    return 'getVRDisplays' in navigator;
+  },
+  expect: false
+},
+{
   desc: '<code>immersive-vr</code> XRSession supported',
   f: async function() {
     let supported = await navigator.xr.isSessionSupported('immersive-vr');
