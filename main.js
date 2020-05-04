@@ -4,10 +4,6 @@ const VERSION = 0.1;
 console.log('XR Tests ' + VERSION);
 
 let $ = document.querySelector.bind(document);
-let testOutput = $('#test-output');
-
-
-let _tests = TESTS;
 
 const SI = 'SamsungBrowser/';
 let ua = navigator.userAgent;
@@ -24,6 +20,7 @@ if (ua.includes(SI)) {
 }
 
 async function runTests(tests) {
+  let testOutput = $('#test-output');
   testOutput.innerHTML = '';
 
   var passed = 0;
@@ -81,6 +78,7 @@ function load() {
   showValidTestPages();
 
   $('#run-btn').addEventListener('click', function(){
+    let _tests = TESTS;
     runTests(_tests);
   });
 
