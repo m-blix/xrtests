@@ -74,6 +74,13 @@ const TESTS = [
     return true;
   },
   expect: true
+},
+{
+  desc: '',
+  ref: 'https://github.com/web-platform-tests/wpt/blob/master/webxr/ar-module/xrSession_environmentBlendMode.https.html',
+  f: function() {
 
+  },
+  expect: true
 }
 ];
