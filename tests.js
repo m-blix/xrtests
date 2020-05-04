@@ -76,10 +76,24 @@ const TESTS = [
   expect: true
 },
 {
-  desc: '',
+  requireUserActivation: true,
+  desc: 'XRSession Blend Modes - VR',
   ref: 'https://github.com/web-platform-tests/wpt/blob/master/webxr/ar-module/xrSession_environmentBlendMode.https.html',
-  f: function() {
-
+  f: async function() {
+    var session = await navigator.xr.requestSession('immersive-vr');
+    var valid = ["opaque", "additive"];
+    return valid.includes(session.environmentBlendMode);
+  },
+  expect: true
+},
+{
+  requireUserActivation: true,
+  desc: 'XRSession Blend Modes - AR',
+  ref: 'https://github.com/web-platform-tests/wpt/blob/master/webxr/ar-module/xrSession_environmentBlendMode.https.html',
+  f: async function() {
+    var session = await navigator.xr.requestSession('immersive-ar');
+    var valid = ["alpha-blend", "additive"];
+    return valid.includes(session.environmentBlendMode);
   },
   expect: true
 }
