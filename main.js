@@ -79,7 +79,12 @@ function showValidTestPages() {
 
 function load() {
   showValidTestPages();
-  runTests(_tests);
+
+  $('#run-btn').addEventListener('click', function(){
+    runTests(_tests);
+  });
+
+  //runTests(_tests);
 }
 
 load();

@@ -47,6 +47,14 @@ div.section a {
   margin-top: 5px;
 }
 
+#tests {
+
+}
+
+#tests #run-btn {
+  margin-bottom: 5px;
+}
+
 #test-output {
   border: 1px solid #bbb;
 }
