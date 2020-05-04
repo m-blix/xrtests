@@ -57,7 +57,7 @@ div.section a {
   margin: 2px;
 }
 
-.pass, .fail {
+.pass, .fail, .info {
   font-family: monospace;
   font-weight: bold;
 }
@@ -68,6 +68,10 @@ div.section a {
 
 .fail {
   color: red;
+}
+
+.info {
+  color: gray;
 }
 
 .final {

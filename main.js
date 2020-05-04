@@ -32,19 +32,30 @@ async function runTests(tests) {
     let testF = test.f;
     let desc = test.desc;
 
-    let _result = await testF();
 
-    let result;
-    if (_result === test.expect) {
-      result = '<span class="pass">PASS</span>';
+    var result;
+    var errorMsg = false;
+    try {
+      result = await testF();
+    } catch (error) {
+      console.log(error);
+      result = 'error';
+    }
+
+    let output;
+    if (result === 'error') {
+      output = '<span class="info">[Requires User Activation]</span>';
+    }
+    else if (result === test.expect) {
+      output = '<span class="pass">PASS</span>';
       passed++;
     } else {
-      result = '<span class="fail">FAIL</span>';
+      output = '<span class="fail">FAIL</span>';
       // TODO: add in expect message
     }
 
     let el = document.createElement('div');
-    el.innerHTML = `${result} : ${desc}`;
+    el.innerHTML = `${output} : ${desc}`;
 
     testOutput.appendChild(el);
   }
