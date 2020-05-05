@@ -48,6 +48,18 @@ const TESTS = [
   expect: true
 },
 {
+  desc: '<code>immersive-ar</code> with <code>hit-test</code> XRSession supported',
+  f: async function() {
+    let options = {
+      requiredFeatures: ['hit-test']
+    }
+    let supported = await navigator.xr.isSessionSupported('immersive-ar', options);
+    return supported;
+
+  },
+  expect: true
+},
+{
   desc: '"<code>XRSystem</code>" object in <code>window</code> object',
   f: function() {
     return 'XRSystem' in window;
