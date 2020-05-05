@@ -97,6 +97,7 @@ const TESTS = [
   expect: true
 },
 {
+  skip: true,
   requireUserActivation: true,
   desc: 'XRSession Blend Modes - VR',
   ref: 'https://github.com/web-platform-tests/wpt/blob/master/webxr/ar-module/xrSession_environmentBlendMode.https.html',
