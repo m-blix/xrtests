@@ -68,7 +68,7 @@ async function runTests(tests) {
 
   let el = document.createElement('div');
   el.classList.add('final');
-  let allPass = passed === tests.length ? '<span class="pass">PASS</span>' : '<span class="fail">FAIL</span>';
+  let allPass = passed === testsCount ? '<span class="pass">PASS</span>' : '<span class="fail">FAIL</span>';
   el.innerHTML = `${allPass}: ${passed} of ${testsCount} passed`;
   testOutput.appendChild(el);
 }
