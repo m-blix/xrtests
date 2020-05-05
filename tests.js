@@ -123,6 +123,7 @@ const TESTS = [
   expect: true
 },
 {
+  skip: true,
   requireUserActivation: true,
   desc: 'XRViews Tests - VR',
   ref: 'https://github.com/web-platform-tests/wpt/blob/master/webxr/xrView_match.https.html',

@@ -29,6 +29,10 @@ async function runTests(tests) {
     let testF = test.f;
     let desc = test.desc;
 
+    if (test.skip) {
+      continue;
+    }
+
 
     var result;
     var errorMsg = false;
