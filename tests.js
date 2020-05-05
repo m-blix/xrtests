@@ -8,6 +8,15 @@ const TESTS = [
   expect: true
 },
 {
+  desc: 'WebXR support by Feature Policy',
+  ref: 'https://github.com/web-platform-tests/wpt/blob/master/webxr/webxr-supported-by-feature-policy.html',
+  f: function() {
+    var features = document.featurePolicy.features();
+    return features.includes('xr-spatial-tracking');
+  },
+  expect: true
+},
+{
   desc: '"WebVR" API not present (deprecated)',
   f: function() {
     return 'getVRDisplays' in navigator;
