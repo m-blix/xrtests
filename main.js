@@ -33,6 +33,7 @@ async function runTests(tests) {
     var result;
     var errorMsg = false;
     try {
+      console.log('Running test: ' + desc);
       result = await testF();
     } catch (error) {
       console.log(error);
@@ -42,12 +43,14 @@ async function runTests(tests) {
     let output;
     if (result === 'error') {
       output = '<span class="info">[Requires User Activation]</span>';
-    }
-    else if (result === test.expect) {
+      console.log('  requires user activation');
+    } else if (result === test.expect) {
       output = '<span class="pass">PASS</span>';
+      console.log('  PASS');
       passed++;
     } else {
       output = '<span class="fail">FAIL</span>';
+      console.log('  FAIL');
       // TODO: add in expect message
     }
 
