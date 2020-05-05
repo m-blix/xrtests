@@ -171,5 +171,22 @@ const TESTS = [
 
   },
   expect: true
+},
+{
+  requireUserActivation: true,
+  desc: '<code>XRSession</code> not supported options',
+  f: async function(){
+    try {
+      var options = {
+        requiredFeatures: ['dom-overlay']
+      };
+      var session = await navigator.xr.requestSession('immersive-ar', options);
+    } catch (error) {
+      console.log(error);
+      return (error.name == 'NotSupportedError');
+    }
+    return false;
+  },
+  expect: true
 }
 ];
