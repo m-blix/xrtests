@@ -127,49 +127,46 @@ const TESTS = [
   desc: 'XRViews Tests - VR',
   ref: 'https://github.com/web-platform-tests/wpt/blob/master/webxr/xrView_match.https.html',
   f: async function() {
-    function timeout(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
-    }
+    return new Promise(async function(resolve){
 
-    var success = true;
-    var session = await navigator.xr.requestSession('immersive-vr');
+      var success = true;
+      var session = await navigator.xr.requestSession('immersive-vr');
 
-    var viewerSpace = await session.requestReferenceSpace('viewer');
+      var viewerSpace = await session.requestReferenceSpace('viewer');
 
-    async function onFrame(time, xrFrame) {
-      let pose = xrFrame.getViewerPose(viewerSpace);
+      async function onFrame(time, xrFrame) {
+        let pose = xrFrame.getViewerPose(viewerSpace);
 
-      if (pose.views.length !== 2) {
-        success = false;
+        if (pose.views.length !== 2) {
+          success = false;
+        }
+
+        let leftView = pose.views[0];
+        let rightView = pose.views[1];
+
+        // Ensure that the views are the right type.
+        if (!(leftView instanceof XRView)) {
+          success = false;
+        }
+        if (!(rightView instanceof XRView)) {
+          success = false;
+        }
+
+        // Ensure they have the expected projection matrices.
+        if (leftView.projectionMatrix === null) {
+          success = false;
+        }
+        if (rightView.projectionMatrix === null) {
+          success = false;
+        }
+
+        await session.end();
+        resolve(success);
       }
 
-      let leftView = pose.views[0];
-      let rightView = pose.views[1];
+      session.requestAnimationFrame(onFrame);
+    });
 
-      // Ensure that the views are the right type.
-      if (!(leftView instanceof XRView)) {
-        success = false;
-      }
-      if (!(rightView instanceof XRView)) {
-        success = false;
-      }
-
-      // Ensure they have the expected projection matrices.
-      if (leftView.projectionMatrix === null) {
-        success = false;
-      }
-      if (rightView.projectionMatrix === null) {
-        success = false;
-      }
-
-      await session.end();
-    }
-
-    session.requestAnimationFrame(onFrame);
-
-    await timeout(5000);
-
-    return success;
   },
   expect: true
 }
