@@ -24,6 +24,7 @@ async function runTests(tests) {
   testOutput.innerHTML = '';
 
   var passed = 0;
+  var testsCount = 0;
   for (let i = 0; i < tests.length; i++) {
     let test = tests[i];
     let testF = test.f;
@@ -32,6 +33,7 @@ async function runTests(tests) {
     if (test.skip) {
       continue;
     }
+    testsCount++;
 
 
     var result;
@@ -67,7 +69,7 @@ async function runTests(tests) {
   let el = document.createElement('div');
   el.classList.add('final');
   let allPass = passed === tests.length ? '<span class="pass">PASS</span>' : '<span class="fail">FAIL</span>';
-  el.innerHTML = `${allPass}: ${passed} of ${tests.length} passed`;
+  el.innerHTML = `${allPass}: ${passed} of ${testsCount} passed`;
   testOutput.appendChild(el);
 }
 
