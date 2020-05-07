@@ -206,6 +206,7 @@ const TESTS = [
     }
     let supported = await navigator.xr.isSessionSupported('immersive-ar', options);
     if (!supported) {
+      console.log('session not supported');
       return supported;
     }
     let session = await navigator.xr.requestSession('immersive-ar', options);
@@ -213,6 +214,7 @@ const TESTS = [
     let hitTestSource = await session.requestHitTestSource({ space: refSpace });
 
     await session.end();
+    console.log(typeof hitTestSource);
     return (typeof hitTestSource === 'XRHitTestSource');
   },
   expect: true
