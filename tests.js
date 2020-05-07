@@ -80,15 +80,22 @@ const TESTS = [
     let objs = Object.getOwnPropertyNames(window).sort(function(a, b){ return a.length - b.length; });
     let xrObjs = objs.filter(function(a){ return a.startsWith('XR') });
 
-    let requiredObs = [
-      "XRPose", "XRView", "XRFrame", "XRSpace", "XRSession", "XRViewport", "XRViewerPose", 
-      "XRWebGLLayer", "XRInputSource", "XRRenderState", "XRSessionEvent", "XRReferenceSpace", 
-      "XRRigidTransform", "XRInputSourceArray", "XRInputSourceEvent", "XRReferenceSpaceEvent", 
+    let requiredObjs = [
+      "XRPose", "XRView", "XRFrame", "XRSpace", "XRSession", "XRViewport", "XRViewerPose",
+      "XRWebGLLayer", "XRInputSource", "XRRenderState", "XRSessionEvent", "XRReferenceSpace",
+      "XRRigidTransform", "XRInputSourceArray", "XRInputSourceEvent", "XRReferenceSpaceEvent",
       "XRBoundedReferenceSpace", "XRInputSourcesChangeEvent"];
 
-    for (let i = 0; i < requiredObs.length; i++) {
-      let prop = requiredObs[i];
+    let hitTestObjs = [
+      "XRRay", "XRHitTestResult", "XRHitTestSource",
+      "XRTransientInputHitTestResult", "XRTransientInputHitTestSource"];
+
+    requiredObjs = requiredObjs.concat(hitTestObjs);
+
+    for (let i = 0; i < requiredObjs.length; i++) {
+      let prop = requiredObjs[i];
       if (window[prop] === undefined) {
+        console.log(`${prop} not in window`);
         return false;
       }
     }
