@@ -202,7 +202,7 @@ const TESTS = [
   desc: 'AR <code>hit-test</code> with <code>HitTestSource</code>',
   f: async function() {
     let options = {
-      requiredFeatures: ['local','hit-test']
+      requiredFeatures: ['hit-test']
     }
     let supported = await navigator.xr.isSessionSupported('immersive-ar', options);
     if (!supported) {
