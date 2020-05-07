@@ -213,7 +213,7 @@ const TESTS = [
     let hitTestSource = await session.requestHitTestSource({ space: refSpace });
 
     await session.end();
-    return (typeof hitTestSource === window.XRHitTestSource);
+    return (typeof hitTestSource === 'XRHitTestSource');
   },
   expect: true
 }
