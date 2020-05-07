@@ -216,8 +216,7 @@ const TESTS = [
     let hitTestSource = await session.requestHitTestSource({ space: refSpace });
     console.log('hittestsource requested');
     await session.end();
-    console.log(typeof hitTestSource);
-    return (typeof hitTestSource === 'XRHitTestSource');
+    return (hitTestSource instanceof XRHitTestSource);
   },
   expect: true
 }
