@@ -212,9 +212,8 @@ const TESTS = [
     let refSpace = await session.requestReferenceSpace('viewer');
     let hitTestSource = await session.requestHitTestSource({ space: refSpace });
 
+    await session.end();
     return (typeof hitTestSource === window.XRHitTestSource);
-
-    return true;
   },
   expect: true
 }
