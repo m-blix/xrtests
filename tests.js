@@ -174,6 +174,7 @@ const TESTS = [
 },
 {
   requireUserActivation: true,
+  ref: 'https://github.com/web-platform-tests/wpt/blob/master/webxr/xrDevice_requestSession_immersive_unsupported.https.html',
   desc: '<code>XRSession</code> not supported options',
   f: async function(){
     try {
@@ -186,6 +187,27 @@ const TESTS = [
       return (error.name == 'NotSupportedError');
     }
     return false;
+  },
+  expect: true
+},
+{
+  requireUserActivation: true,
+  desc: 'AR <code>hit-test</code> with <code>HitTestSource</code>',
+  f: async function() {
+    let options = {
+      requiredFeatures: ['local','hit-test']
+    }
+    let supported = await navigator.xr.isSessionSupported('immersive-ar', options);
+    if (!supported) {
+      return supported;
+    }
+    let session = await navigator.xr.requestSession('immersive-ar', options);
+    let refSpace = await session.requestReferenceSpace('viewer');
+    let hitTestSource = await session.requestHitTestSource({ space: refSpace });
+
+    return (typeof hitTestSource === window.XRHitTestSource);
+
+    return true;
   },
   expect: true
 }
