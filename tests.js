@@ -210,9 +210,11 @@ const TESTS = [
       return supported;
     }
     let session = await navigator.xr.requestSession('immersive-ar', options);
+    console.log('session created');
     let refSpace = await session.requestReferenceSpace('viewer');
+    console.log('viewer referencespace created');
     let hitTestSource = await session.requestHitTestSource({ space: refSpace });
-
+    console.log('hittestsource requested');
     await session.end();
     console.log(typeof hitTestSource);
     return (typeof hitTestSource === 'XRHitTestSource');
