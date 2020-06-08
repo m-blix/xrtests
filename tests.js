@@ -219,5 +219,48 @@ const TESTS = [
     return (hitTestSource instanceof XRHitTestSource);
   },
   expect: true
-}
+},
+{
+  /* DOM Overlay, not supported yet */
+  desc: '<code>immersive-ar</code> with <code>dom-overlay</code> XRSession not supported',
+  f: async function() {
+    let options = {
+      requiredFeatures: ['dom-overlay']
+    }
+    let supported = await navigator.xr.isSessionSupported('immersive-ar', options);
+    return supported;
+
+  },
+  expect: false,
+  skip: true
+},
+{
+  /* Anchors, not supported yet */
+  requireUserActivation: true,
+  desc: '<code>immersive-ar</code> with <code>anchors</code> XRSession not supported',
+  f: async function(){
+    try {
+      var options = {
+        requiredFeatures: ['anchors']
+      };
+      var session = await navigator.xr.requestSession('immersive-ar', options);
+    } catch (error) {
+      console.log(error);
+      return (error.name == 'NotSupportedError');
+    }
+    return false;
+  },
+  expect: false
+},
+{
+  desc: 'context creation with <code>makeXRCompatible</code> function',
+  f: async function() {
+    var webglCanvas = document.createElement('canvas');
+    let gl = webglCanvas.getContext('webgl');
+
+    let compat = await gl.makeXRCompatible();
+    return gl.getContextAttributes().xrCompatible;
+  },
+  expect: true
+},
 ];
