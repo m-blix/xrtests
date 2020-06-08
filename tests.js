@@ -219,5 +219,42 @@ const TESTS = [
     return (hitTestSource instanceof XRHitTestSource);
   },
   expect: true
-}
+},
+{
+  /* DOM Overlay, not supported yet */
+  desc: '<code>immersive-ar</code> with <code>dom-overlay</code> XRSession not supported',
+  f: async function() {
+    let options = {
+      requiredFeatures: ['dom-overlay']
+    }
+    let supported = await navigator.xr.isSessionSupported('immersive-ar', options);
+    return supported;
+
+  },
+  expect: false
+},
+{
+  /* Anchors, not supported yet */
+  desc: '<code>immersive-ar</code> with <code>anchors</code> XRSession not supported',
+  f: async function() {
+    let options = {
+      requiredFeatures: ['anchors']
+    }
+    let supported = await navigator.xr.isSessionSupported('immersive-ar', options);
+    return supported;
+
+  },
+  expect: false
+},
+{
+  desc: 'context creation with <code>makeXRCompatible</code> function',
+  f: async function() {
+    var webglCanvas = document.createElement('canvas');
+    let gl = webglCanvas.getContext('webgl');
+
+    let compat = await gl.makeXRCompatible();
+    return gl.getContextAttributes().xrCompatible;
+  },
+  expect: true
+},
 ];
