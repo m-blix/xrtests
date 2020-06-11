@@ -92,6 +92,19 @@ function load() {
   });
 
   //runTests(_tests);
+  registerServiceWorker();
+}
+
+function registerServiceWorker() {
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js').then(function() {
+      console.log('service worker registration complete');
+    }, function() {
+      console.log('service worker registration failed');
+    });
+  } else {
+    console.log('service worker not supported');
+  }
 }
 
 load();
