@@ -1,4 +1,3 @@
-// TESTS
 const TESTS = [
 {
   desc: '<code>xr</code> in <code>navigator</code>; WebXR supported',
@@ -263,4 +262,11 @@ const TESTS = [
   },
   expect: true
 },
+{
+  desc: 'DOM Overlay support',
+  f: async function() {
+    return 'domOverlayState' in XRSession.prototype
+  },
+  expect: true
+}
 ];
