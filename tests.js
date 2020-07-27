@@ -267,6 +267,7 @@ const TESTS = [
   f: async function() {
     return 'domOverlayState' in XRSession.prototype
   },
-  expect: true
+  expect: true,
+  minVersion: 13
 }
 ];

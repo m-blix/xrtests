@@ -5,13 +5,15 @@ console.log('XR Tests ' + VERSION);
 
 let $ = document.querySelector.bind(document);
 
+let major, minor;
+
 const SI = 'SamsungBrowser/';
 let ua = navigator.userAgent;
 let uaEl = $('#ua');
 uaEl.innerHTML = ua;
-if (ua.includes(SI)) {
+let isSI = ua.includes(SI);
+if (isSI) {
   let version = ua.substr(ua.indexOf(SI)+SI.length, 4);
-  let major, minor;
   [major, minor] = version.split('.');
   console.log(version);
   if (major >= 12) {
@@ -33,6 +35,12 @@ async function runTests(tests) {
     if (test.skip) {
       continue;
     }
+    let minVersion = ('minVersion' in test) ? test.minVersion : 12;
+    if (isSI && major < minVersion) {
+      console.log(`skipping test for: ${minVersion} (on ${major})`);
+      continue;
+    }
+
     testsCount++;
 
 
